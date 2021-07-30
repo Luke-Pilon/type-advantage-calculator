@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import { typeOptions } from './utils/types.js';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [{ firstType, secondType }, setTypes] = useState({
+        firstType: null,
+        secondType: null,
+    });
+    const handleTypeChange = (e) =>
+        setTypes((state) => ({ ...state, [e.target.name]: e.target.value }));
+    return (
+        <div className='App'>
+            <select name='firstType' onChange={(e) => handleTypeChange(e)}>
+                {typeOptions}
+            </select>
+            <select name='secondType' onChange={(e) => handleTypeChange(e)}>
+                {typeOptions}
+            </select>
+            <div>{firstType}</div>
+            <div>{secondType}</div>
+        </div>
+    );
+};
 
 export default App;
