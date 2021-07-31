@@ -1,4 +1,3 @@
-//List of possible types for Pokemon
 const types = [
     'normal',
     'fire',
@@ -20,14 +19,37 @@ const types = [
     'fairy',
 ];
 
-//Types as option elements for Select input
-const typeOptions = types.map((type) => (
-    <option key={type} value={type}>
-        {type[0].toUpperCase() + type.slice(1)}
-    </option>
-));
-typeOptions.unshift(<option key='null' value='null'></option>);
+const colors = {
+    normal: '#aa9',
+    fire: '#f42',
+    water: '#39f',
+    electric: '#fc3',
+    grass: '#7c5',
+    ice: '#6cf',
+    fighting: '#b54',
+    poison: '#a59',
+    ground: '#db5',
+    flying: '#89f',
+    psychic: '#f59',
+    bug: '#ab2',
+    rock: '#ba6',
+    ghost: '#66b',
+    dragon: '#76e',
+    dark: '#754',
+    steel: '#aab',
+    fairy: '#e9e',
+};
 
+/*const typeObjectsArray = [];
+for (var i = 0; i < types.length; i++) {
+    let typeObject = {};
+    var type = types[i];
+    typeObject.type = type;
+    typeObject.colorCode = colors[type];
+    typeObjectsArray.push(typeObject);
+}
+
+console.log(typeObjectsArray); */
 const typeObjectsArray = [
     { type: 'normal', colorCode: '#aa9' },
     { type: 'fire', colorCode: '#f42' },
@@ -48,5 +70,3 @@ const typeObjectsArray = [
     { type: 'steel', colorCode: '#aab' },
     { type: 'fairy', colorCode: '#e9e' },
 ];
-
-export { types, typeOptions, typeObjectsArray };

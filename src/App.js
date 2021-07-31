@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import { typeOptions } from './utils/types.js';
+import typeCell from './components/typeCell';
 
 const App = () => {
     const [{ firstType, secondType }, setTypes] = useState({
@@ -17,8 +18,7 @@ const App = () => {
             <select name='secondType' onChange={(e) => handleTypeChange(e)}>
                 {typeOptions}
             </select>
-            <div>{firstType}</div>
-            <div>{secondType}</div>
+            <div> </div>
         </div>
     );
 };
