@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import './App.css';
-import { typeOptions } from './utils/types.js';
-import typeCell from './components/typeCell';
+import { typeOptions, typeObjectsArray } from './utils/types.js';
+import { checkAdvantage } from './utils/checkAdvantage.js';
+import TypeCell from './components/TypeCell';
 
 const App = () => {
     const [{ firstType, secondType }, setTypes] = useState({
@@ -18,7 +19,19 @@ const App = () => {
             <select name='secondType' onChange={(e) => handleTypeChange(e)}>
                 {typeOptions}
             </select>
-            <div> </div>
+            <div>{firstType}</div>
+            <div>{secondType}</div>
+            <div>{checkAdvantage(firstType, 'fire')}</div>
+            <div>
+                {typeObjectsArray.map((typeObject) => (
+                    <TypeCell
+                        moveType={typeObject.type}
+                        colorCode={typeObject.colorCode}
+                        key={typeObject.type}
+                        defenderTypes={[firstType, secondType]}
+                    />
+                ))}
+            </div>
         </div>
     );
 };

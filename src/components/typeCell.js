@@ -1,10 +1,9 @@
-const typeCell = (type, colorCode) => {
+const TypeCell = ({ moveType, colorCode, defenderTypes }) => {
     return (
         <div className='type-cell'>
-            <div>{type}</div>
-            <div>**PLACEHOLDER TEXT**</div>
+            <div>{moveType}</div>
         </div>
     );
 };
 
-export default typeCell;
+export default TypeCell;

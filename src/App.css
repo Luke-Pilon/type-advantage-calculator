@@ -39,4 +39,5 @@
 
 .type-cell {
     display: flex;
+    height: 50px;
 }
