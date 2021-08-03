@@ -25,7 +25,8 @@ const App = () => {
                         moveType={typeObject.type}
                         colorCode={typeObject.colorCode}
                         key={typeObject.type}
-                        defenderTypes={[firstType, secondType]}
+                        firstDefenderType={firstType}
+                        secondDefenderType={secondType}
                         checkAdvantage={checkAdvantage}
                     />
                 ))}

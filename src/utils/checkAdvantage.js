@@ -1,6 +1,7 @@
 import { typeAdvantagesArray } from './typeAdvantages';
 
 const checkAdvantage = (attackingType, defenderType) => {
+    console.log('calculating');
     if (attackingType) {
         let typeObject = typeAdvantagesArray.find(
             (type) => attackingType.toUpperCase() === type.name.toUpperCase()
