@@ -19,9 +19,6 @@ const App = () => {
             <select name='secondType' onChange={(e) => handleTypeChange(e)}>
                 {typeOptions}
             </select>
-            <div>{firstType}</div>
-            <div>{secondType}</div>
-            <div>{checkAdvantage(firstType, 'fire')}</div>
             <div>
                 {typeObjectsArray.map((typeObject) => (
                     <TypeCell
@@ -29,6 +26,7 @@ const App = () => {
                         colorCode={typeObject.colorCode}
                         key={typeObject.type}
                         defenderTypes={[firstType, secondType]}
+                        checkAdvantage={checkAdvantage}
                     />
                 ))}
             </div>
