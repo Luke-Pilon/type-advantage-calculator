@@ -2,14 +2,34 @@ import { useState } from 'react';
 import './App.css';
 import { types, typeObjectsArray } from './utils/types.js';
 import { checkAdvantage } from './utils/checkAdvantage.js';
-import TypeCell from './components/TypeCell';
+import TypeRow from './components/TypeCell';
+import styled from 'styled-components';
 
 var typeOptions = types.map((type) => (
     <option key={type} value={type}>
         {type[0].toUpperCase() + type.slice(1)}
     </option>
 ));
-console.log(typeOptions);
+
+const Wrapper = styled.div`
+    width: 90%;
+    height: 100vh;
+    max-width: 450px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+`;
+
+const TypeSelectContainer = styled.section`
+    display: flex;
+    flex-direction: column;
+`;
+
+const TypeRowContainer = styled.section`
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+`;
 
 const App = () => {
     const [{ firstType, secondType }, setTypes] = useState({
@@ -18,29 +38,40 @@ const App = () => {
     });
     const handleTypeChange = (e) =>
         setTypes((state) => ({ ...state, [e.target.name]: e.target.value }));
+
     return (
         <div className='App'>
-            <select name='firstType' onChange={(e) => handleTypeChange(e)}>
-                <option key='null' value='null'></option>
-                {typeOptions}
-            </select>
-            <select name='secondType' onChange={(e) => handleTypeChange(e)}>
-                <option key='null' value='null'></option>
-                {/*Prevent a type from being selected twice*/}
-                {typeOptions.filter((item) => item.key !== firstType)}
-            </select>
-            <div>
-                {typeObjectsArray.map((typeObject) => (
-                    <TypeCell
-                        moveType={typeObject.type}
-                        colorCode={typeObject.colorCode}
-                        key={typeObject.type}
-                        firstDefenderType={firstType}
-                        secondDefenderType={secondType}
-                        checkAdvantage={checkAdvantage}
-                    />
-                ))}
-            </div>
+            <Wrapper>
+                <TypeSelectContainer>
+                    <select
+                        name='firstType'
+                        onChange={(e) => handleTypeChange(e)}
+                    >
+                        <option key='null' value='null'></option>
+                        {typeOptions}
+                    </select>
+                    <select
+                        name='secondType'
+                        onChange={(e) => handleTypeChange(e)}
+                    >
+                        <option key='null' value='null'></option>
+                        {/*Prevent a type from being selected twice*/}
+                        {typeOptions.filter((item) => item.key !== firstType)}
+                    </select>
+                </TypeSelectContainer>
+                <TypeRowContainer>
+                    {typeObjectsArray.map((typeObject) => (
+                        <TypeRow
+                            moveType={typeObject.type}
+                            colorCode={typeObject.colorCode}
+                            key={typeObject.type}
+                            firstDefenderType={firstType}
+                            secondDefenderType={secondType}
+                            checkAdvantage={checkAdvantage}
+                        />
+                    ))}
+                </TypeRowContainer>
+            </Wrapper>
         </div>
     );
 };

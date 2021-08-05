@@ -20,14 +20,6 @@ const types = [
     'fairy',
 ];
 
-//Types as option elements for Select input
-const typeOptions = types.map((type) => (
-    <option key={type} value={type}>
-        {type[0].toUpperCase() + type.slice(1)}
-    </option>
-));
-typeOptions.unshift(<option key='null' value='null'></option>);
-
 const typeObjectsArray = [
     { type: 'normal', colorCode: '#aa9' },
     { type: 'fire', colorCode: '#f42' },
@@ -49,4 +41,4 @@ const typeObjectsArray = [
     { type: 'fairy', colorCode: '#e9e' },
 ];
 
-export { types, typeOptions, typeObjectsArray };
+export { types, typeObjectsArray };
