@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import styled from 'styled-components';
+import { DamageMultiplierSpan } from './DamageMultiplierSpan';
 
 const StyledTypeRow = styled.div`
     margin-top: 1em;
@@ -13,11 +14,7 @@ const MoveTypeSpan = styled.span`
     min-width: 3.5rem;
     text-align: center;
     text-transform: capitalize;
-    display: inline-box;
-`;
-
-const DamageMultiplierSpan = styled.span`
-    padding: 0.5em;
+    display: inline-block;
 `;
 
 const TypeRow = ({
@@ -43,9 +40,7 @@ const TypeRow = ({
     return (
         <StyledTypeRow>
             <MoveTypeSpan colorCode={colorCode}>{moveType}</MoveTypeSpan>
-            <DamageMultiplierSpan multiplier={damageMultiplier}>
-                {firstDefenderTypeMultiplier * secondDefenderTypeMultiplier}
-            </DamageMultiplierSpan>
+            <DamageMultiplierSpan multiplier={damageMultiplier} />
         </StyledTypeRow>
     );
 };

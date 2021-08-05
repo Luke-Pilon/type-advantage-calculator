@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import { types, typeObjectsArray } from './utils/types.js';
 import { checkAdvantage } from './utils/checkAdvantage.js';
-import TypeRow from './components/TypeCell';
+import TypeRow from './components/TypeRow';
 import styled from 'styled-components';
 
 var typeOptions = types.map((type) => (
