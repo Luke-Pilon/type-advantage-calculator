@@ -3,18 +3,24 @@ import styled from 'styled-components';
 import { DamageMultiplierSpan } from './DamageMultiplierSpan';
 
 const StyledTypeRow = styled.div`
-    margin-top: 1em;
+    margin: 0.5em 1em;
     justify-content: center;
+    font-weight: bold;
+    flex-basis: 40%;
+    flex-grow: 1;
+    display: flex;
 `;
 
 const MoveTypeSpan = styled.span`
     background: ${(props) => props.colorCode};
     padding: 0.5rem;
     color: white;
-    min-width: 3.5rem;
     text-align: center;
     text-transform: capitalize;
     display: inline-block;
+    flex: 2;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
 `;
 
 const TypeRow = ({

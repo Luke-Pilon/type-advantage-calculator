@@ -29,6 +29,7 @@ const TypeRowContainer = styled.section`
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    padding: 0.5e;
 `;
 
 const App = () => {
@@ -48,7 +49,7 @@ const App = () => {
                         onChange={(e) => handleTypeChange(e)}
                     >
                         <option key='null' value='null'></option>
-                        {typeOptions}
+                        {typeOptions.filter((item) => item.key !== secondType)}
                     </select>
                     <select
                         name='secondType'
