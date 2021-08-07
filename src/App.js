@@ -24,13 +24,6 @@ const TypeSelectContainer = styled.section`
     flex-direction: column;
 `;
 
-const TypeRowContainer = styled.section`
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    padding: 0.5e;
-`;
-
 const App = () => {
     const [{ firstType, secondType }, setTypes] = useState({
         firstType: null,
