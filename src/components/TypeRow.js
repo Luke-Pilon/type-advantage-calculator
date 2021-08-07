@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import styled from 'styled-components';
 import { DamageMultiplierSpan } from './DamageMultiplierSpan';
+import { MoveTypeSpan } from './MoveTypeSpan';
 
 const StyledTypeRow = styled.div`
     margin: 0.5em 1em;
@@ -9,18 +10,6 @@ const StyledTypeRow = styled.div`
     flex-basis: 40%;
     flex-grow: 1;
     display: flex;
-`;
-
-const MoveTypeSpan = styled.span`
-    background: ${(props) => props.colorCode};
-    padding: 0.5rem;
-    color: white;
-    text-align: center;
-    text-transform: capitalize;
-    display: inline-block;
-    flex: 2;
-    border-top-left-radius: 16px;
-    border-bottom-left-radius: 16px;
 `;
 
 const TypeRow = ({

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { multiplierDisplayObjects } from '../utils/multiplierDisplayObjects';
+import parse from 'html-react-parser';
 
 const StyledDamageMultiplierSpan = styled.span`
     padding: 0.5em;
@@ -12,10 +13,16 @@ const StyledDamageMultiplierSpan = styled.span`
 `;
 
 const DamageMultiplierSpan = (props) => {
-    //Assign multiplierDisplayObject
+    //Assign multiplierDisplayObject to matching multiplier from multiplierDisplayObjects.js, or 1 by default
     let multiplierDisplayObject = multiplierDisplayObjects.find(
         ({ multiplier }) => multiplier === props.multiplier
-    ) || { multiplier: 1, colorCode: '#f0f0f0', displayText: '1' };
+    ) || {
+        multiplier: 1,
+        backgroundColorCode: '#f0f0f0',
+        textColorCode: '#000000',
+        displayText: parse('1&times;'),
+    };
+
     return (
         <StyledDamageMultiplierSpan
             backgroundColor={multiplierDisplayObject.backgroundColorCode}
