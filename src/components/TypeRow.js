@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import styled from 'styled-components';
 import { DamageMultiplierSpan } from './DamageMultiplierSpan';
 import { MoveTypeSpan } from './MoveTypeSpan';
@@ -12,30 +11,11 @@ const StyledTypeRow = styled.div`
     display: flex;
 `;
 
-const TypeRow = ({
-    moveType,
-    colorCode,
-    firstDefenderType,
-    secondDefenderType,
-    checkAdvantage,
-}) => {
-    //Memoize multipliers for each defender type so only the one that changes is rerendered upon a new selection
-    const firstDefenderTypeMultiplier = useMemo(
-        () => checkAdvantage(moveType, firstDefenderType),
-        [firstDefenderType, checkAdvantage, moveType]
-    );
-    const secondDefenderTypeMultiplier = useMemo(
-        () => checkAdvantage(moveType, secondDefenderType),
-        [secondDefenderType, checkAdvantage, moveType]
-    );
-
-    const damageMultiplier =
-        firstDefenderTypeMultiplier * secondDefenderTypeMultiplier;
-
+const TypeRow = ({ moveType, colorCode, multiplier }) => {
     return (
         <StyledTypeRow>
             <MoveTypeSpan colorCode={colorCode}>{moveType}</MoveTypeSpan>
-            <DamageMultiplierSpan multiplier={damageMultiplier} />
+            <DamageMultiplierSpan multiplier={multiplier} />
         </StyledTypeRow>
     );
 };

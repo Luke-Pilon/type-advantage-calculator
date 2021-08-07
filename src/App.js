@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import './App.css';
-import { types, typeObjectsArray } from './utils/types.js';
-import { checkAdvantage } from './utils/checkAdvantage.js';
-import TypeRow from './components/TypeRow';
+import { types } from './utils/types.js';
+import TypeRowList from './components/TypeRowList';
 import styled from 'styled-components';
 
 var typeOptions = types.map((type) => (
@@ -60,18 +59,10 @@ const App = () => {
                         {typeOptions.filter((item) => item.key !== firstType)}
                     </select>
                 </TypeSelectContainer>
-                <TypeRowContainer>
-                    {typeObjectsArray.map((typeObject) => (
-                        <TypeRow
-                            moveType={typeObject.type}
-                            colorCode={typeObject.colorCode}
-                            key={typeObject.type}
-                            firstDefenderType={firstType}
-                            secondDefenderType={secondType}
-                            checkAdvantage={checkAdvantage}
-                        />
-                    ))}
-                </TypeRowContainer>
+                <TypeRowList
+                    firstDefenderType={firstType}
+                    secondDefenderType={secondType}
+                />
             </Wrapper>
         </div>
     );
