@@ -4,19 +4,19 @@ const multiplierDisplayObjects = [
     {
         multiplier: 0,
         backgroundColorCode: '#30322f',
-        textColorCode: 'c9c9c9',
+        textColorCode: '#d6d6d6',
         displayText: parse('0&times;'),
     },
     {
         multiplier: 0.25,
-        backgroundColorCode: '#e91616',
-        textColorCode: '#000000',
+        backgroundColorCode: '#e5782a',
+        textColorCode: '#121212',
         displayText: parse('&frac14;&times;'),
     },
     {
         multiplier: 0.5,
-        backgroundColorCode: '#f27878',
-        textColorCode: '#ffffff',
+        backgroundColorCode: '#f0b489',
+        textColorCode: '#121212',
         displayText: parse('&frac12;&times;'),
     },
     {
