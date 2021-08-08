@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import { types } from './utils/types.js';
 import TypeRowList from './components/TypeRowList';
 import styled from 'styled-components';
+import { typeObjectsArray } from './utils/types';
+import { checkAdvantage } from './utils/checkAdvantage';
 
 var typeOptions = types.map((type) => (
     <option key={type} value={type}>
@@ -29,8 +31,20 @@ const App = () => {
         firstType: null,
         secondType: null,
     });
+    const [moveTypes, setMoveTypes] = useState(typeObjectsArray);
     const handleTypeChange = (e) =>
         setTypes((state) => ({ ...state, [e.target.name]: e.target.value }));
+
+    useEffect(() => {
+        setMoveTypes(
+            typeObjectsArray.map((type) => ({
+                ...type,
+                multiplier:
+                    checkAdvantage(type.type, firstType) *
+                    checkAdvantage(type.type, secondType),
+            }))
+        );
+    }, [firstType, secondType]);
 
     return (
         <div className='App'>
@@ -55,6 +69,7 @@ const App = () => {
                 <TypeRowList
                     firstDefenderType={firstType}
                     secondDefenderType={secondType}
+                    moveTypes={moveTypes}
                 />
             </Wrapper>
         </div>

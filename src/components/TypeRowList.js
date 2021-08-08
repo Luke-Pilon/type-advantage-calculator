@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import TypeRow from './TypeRow';
-import { typeObjectsArray } from '../utils/types';
-import { checkAdvantage } from '../utils/checkAdvantage';
+
 const StyledTypeRowList = styled.section`
     display: flex;
     flex-wrap: wrap;
@@ -9,18 +8,18 @@ const StyledTypeRowList = styled.section`
     padding: 0.5e;
 `;
 
-const TypeRowList = ({ firstDefenderType, secondDefenderType }) => {
+const TypeRowList = ({ moveTypes }) => {
+    const sortedMoveTypes = [...moveTypes].sort((a, b) => {
+        return b.multiplier - a.multiplier;
+    });
     return (
         <StyledTypeRowList>
-            {typeObjectsArray.map((typeObject) => (
+            {sortedMoveTypes.map((type) => (
                 <TypeRow
-                    moveType={typeObject.type}
-                    colorCode={typeObject.colorCode}
-                    key={typeObject.type}
-                    multiplier={
-                        checkAdvantage(typeObject.type, firstDefenderType) *
-                        checkAdvantage(typeObject.type, secondDefenderType)
-                    }
+                    moveType={type.type}
+                    colorCode={type.colorCode}
+                    key={type.type}
+                    multiplier={type.multiplier}
                 />
             ))}
         </StyledTypeRowList>
