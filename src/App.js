@@ -2,15 +2,10 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import { types } from './utils/types.js';
 import TypeRowList from './components/TypeRowList';
+import TypeSelect from './components/TypeSelect';
 import styled from 'styled-components';
 import { typeObjectsArray } from './utils/types';
 import { checkAdvantage } from './utils/checkAdvantage';
-
-var typeOptions = types.map((type) => (
-    <option key={type} value={type}>
-        {type[0].toUpperCase() + type.slice(1)}
-    </option>
-));
 
 const Wrapper = styled.div`
     width: 90%;
@@ -45,26 +40,21 @@ const App = () => {
             }))
         );
     }, [firstType, secondType]);
-
+    /*{typeOptions.filter((item) => item.key !== secondType)}*/
     return (
         <div className='App'>
             <Wrapper>
                 <TypeSelectContainer>
-                    <select
+                    <TypeSelect
                         name='firstType'
-                        onChange={(e) => handleTypeChange(e)}
-                    >
-                        <option key='null' value='null'></option>
-                        {typeOptions.filter((item) => item.key !== secondType)}
-                    </select>
-                    <select
+                        onChange={handleTypeChange}
+                        types={types.filter((type) => type !== secondType)}
+                    />
+                    <TypeSelect
                         name='secondType'
-                        onChange={(e) => handleTypeChange(e)}
-                    >
-                        <option key='null' value='null'></option>
-                        {/*Prevent a type from being selected twice*/}
-                        {typeOptions.filter((item) => item.key !== firstType)}
-                    </select>
+                        onChange={handleTypeChange}
+                        types={types.filter((type) => type !== firstType)}
+                    />
                 </TypeSelectContainer>
                 <TypeRowList
                     firstDefenderType={firstType}
