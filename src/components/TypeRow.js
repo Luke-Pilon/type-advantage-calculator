@@ -9,6 +9,9 @@ const StyledTypeRow = styled.div`
     flex-basis: 40%;
     flex-grow: 1;
     display: flex;
+    & > span {
+        border: 3px solid rgba(0, 0, 0, 0.15);
+    }
 `;
 
 const TypeRow = ({ moveType, colorCode, multiplier }) => {
