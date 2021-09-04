@@ -6,6 +6,7 @@ const StyledTypeRowList = styled.section`
     flex-wrap: wrap;
     flex-direction: row;
     padding: 0.5e;
+    margin-top: .5rem;
 `;
 
 const TypeRowList = ({ moveTypes }) => {

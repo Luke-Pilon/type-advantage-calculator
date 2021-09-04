@@ -29,7 +29,8 @@ const App = () => {
     const [moveTypes, setMoveTypes] = useState(typeObjectsArray);
     const handleTypeChange = (e) =>
         setTypes((state) => ({ ...state, [e.target.name]: e.target.value }));
-
+    //TODO
+    //Split this into seperate functions for each dependency to reduce calls of checkAdvantage
     useEffect(() => {
         setMoveTypes(
             typeObjectsArray.map((type) => ({
@@ -44,17 +45,17 @@ const App = () => {
         <div className='App'>
             <Wrapper>
                 <TypeSelectContainer>
-                    <label htmlFor='firstType'>Defender Type</label>
                     <TypeSelect
                         name='firstType'
                         onChange={handleTypeChange}
                         types={types.filter((type) => type !== secondType)}
+                        labelText='Defender Type'
                     />
-                    <label htmlFor='secondType'>Secondary Defender Type</label>
                     <TypeSelect
                         name='secondType'
                         onChange={handleTypeChange}
                         types={types.filter((type) => type !== firstType)}
+                        labelText='Secondary Defender Type'
                     />
                 </TypeSelectContainer>
                 <TypeRowList
