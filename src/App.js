@@ -40,16 +40,17 @@ const App = () => {
             }))
         );
     }, [firstType, secondType]);
-    /*{typeOptions.filter((item) => item.key !== secondType)}*/
     return (
         <div className='App'>
             <Wrapper>
                 <TypeSelectContainer>
+                    <label htmlFor='firstType'>Defender Type</label>
                     <TypeSelect
                         name='firstType'
                         onChange={handleTypeChange}
                         types={types.filter((type) => type !== secondType)}
                     />
+                    <label htmlFor='secondType'>Secondary Defender Type</label>
                     <TypeSelect
                         name='secondType'
                         onChange={handleTypeChange}
