@@ -59,8 +59,6 @@ const App = () => {
                     />
                 </TypeSelectContainer>
                 <TypeRowList
-                    firstDefenderType={firstType}
-                    secondDefenderType={secondType}
                     moveTypes={moveTypes}
                 />
             </Wrapper>
