@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import { types } from './utils/types.js';
+import { typeObjectsArray } from './utils/types';
 import TypeRowList from './components/TypeRowList';
 import TypeSelect from './components/TypeSelect';
 import styled from 'styled-components';
-import { typeObjectsArray } from './utils/types';
 import { checkAdvantage } from './utils/checkAdvantage';
 
 const Wrapper = styled.div`
@@ -29,18 +29,22 @@ const App = () => {
     const [moveTypes, setMoveTypes] = useState(typeObjectsArray);
     const handleTypeChange = (e) =>
         setTypes((state) => ({ ...state, [e.target.name]: e.target.value }));
-    //TODO
-    //Split this into seperate functions for each dependency to reduce calls of checkAdvantage
     useEffect(() => {
-        setMoveTypes(
-            typeObjectsArray.map((type) => ({
+        setMoveTypes((moveTypes) =>
+            moveTypes.map((type) => ({
                 ...type,
-                multiplier:
-                    checkAdvantage(type.type, firstType) *
-                    checkAdvantage(type.type, secondType),
+                firstTypeMultiplier: checkAdvantage(type.type, firstType),
             }))
         );
-    }, [firstType, secondType]);
+    }, [firstType]);
+    useEffect(() => {
+        setMoveTypes((moveTypes) =>
+            moveTypes.map((type) => ({
+                ...type,
+                secondTypeMultiplier: checkAdvantage(type.type, secondType),
+            }))
+        );
+    }, [secondType]);
     return (
         <div className='App'>
             <Wrapper>
@@ -58,9 +62,7 @@ const App = () => {
                         labelText='Secondary Defender Type'
                     />
                 </TypeSelectContainer>
-                <TypeRowList
-                    moveTypes={moveTypes}
-                />
+                <TypeRowList moveTypes={moveTypes} />
             </Wrapper>
         </div>
     );

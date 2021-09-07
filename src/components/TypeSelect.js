@@ -1,14 +1,15 @@
 import styled from 'styled-components';
+import { memo } from 'react';
 
 const StyledTypeSelect = styled.div`
     display: flex;
     flex-direction: column;
-    margin-top: .5rem;
+    margin-top: 0.5rem;
     & > label {
-        padding-bottom: .25rem;
+        padding-bottom: 0.25rem;
     }
 `;
-const TypeSelect = ({ name, types, onChange, labelText }) => {
+const TypeSelect = memo(({ name, types, onChange, labelText }) => {
     return (
         <StyledTypeSelect>
             <label htmlFor={name}>{labelText}</label>
@@ -22,6 +23,6 @@ const TypeSelect = ({ name, types, onChange, labelText }) => {
             </select>
         </StyledTypeSelect>
     );
-};
+});
 
 export default TypeSelect;
