@@ -6,6 +6,7 @@ const StyledTypeRow = styled.div`
     margin: 0.5em 1em;
     justify-content: center;
     font-weight: bold;
+    font-size: 20px;
     flex-basis: 40%;
     flex-grow: 1;
     display: flex;

@@ -10,7 +10,7 @@ import { checkAdvantage } from './utils/checkAdvantage';
 const Wrapper = styled.div`
     width: 90%;
     height: 100vh;
-    max-width: 450px;
+    max-width: 540px;
     margin: auto;
     display: flex;
     flex-direction: column;

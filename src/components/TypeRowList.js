@@ -11,7 +11,6 @@ const StyledTypeRowList = styled.section`
 `;
 
 const TypeRowList = memo(({ moveTypes }) => {
-    console.log(moveTypes);
     const sortedMoveTypes = [...moveTypes].sort((a, b) => {
         return (
             b.firstTypeMultiplier * b.secondTypeMultiplier -
