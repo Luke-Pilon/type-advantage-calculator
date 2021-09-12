@@ -20,7 +20,7 @@ const TypeSelectContainer = styled.section`
     flex-direction: column;
 `;
 
-const types = typeObjectsArray.map((typeObject) => typeObject['type']);
+const types = typeObjectsArray.map((typeObject) => typeObject['type']).sort();
 
 const App = () => {
     const [{ firstType, secondType }, setTypes] = useState({
