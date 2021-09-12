@@ -5,10 +5,9 @@ const StyledTypeSelect = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: 0.5rem;
+    font-size: 1.25rem;
     & > label {
         padding-bottom: 0.25rem;
-    }
-    & > option {
     }
 `;
 const TypeSelect = memo(({ name, types, onChange, labelText }) => {

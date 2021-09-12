@@ -3,22 +3,9 @@ import './App.css';
 import { typeObjectsArray } from './utils/types';
 import TypeRowList from './components/TypeRowList';
 import TypeSelect from './components/TypeSelect';
-import styled from 'styled-components';
+import Wrapper from './components/Wrapper';
+import TypeSelectContainer from './components/TypeSelectContainer';
 import { checkAdvantage } from './utils/checkAdvantage';
-
-const Wrapper = styled.div`
-    width: 90%;
-    height: 100vh;
-    max-width: 540px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-`;
-
-const TypeSelectContainer = styled.section`
-    display: flex;
-    flex-direction: column;
-`;
 
 const types = typeObjectsArray.map((typeObject) => typeObject['type']).sort();
 
