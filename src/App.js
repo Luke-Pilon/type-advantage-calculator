@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import { types } from './utils/types.js';
 import { typeObjectsArray } from './utils/types';
 import TypeRowList from './components/TypeRowList';
 import TypeSelect from './components/TypeSelect';
@@ -22,6 +21,7 @@ const TypeSelectContainer = styled.section`
 `;
 
 const App = () => {
+    const types = typeObjectsArray.map((typeObject) => typeObject['type']);
     const [{ firstType, secondType }, setTypes] = useState({
         firstType: null,
         secondType: null,
