@@ -8,6 +8,8 @@ const StyledTypeSelect = styled.div`
     & > label {
         padding-bottom: 0.25rem;
     }
+    & > option {
+    }
 `;
 const TypeSelect = memo(({ name, types, onChange, labelText }) => {
     return (

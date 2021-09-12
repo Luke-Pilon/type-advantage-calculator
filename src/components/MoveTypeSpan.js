@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const MoveTypeSpan = styled.span`
     background: ${(props) => props.colorCode};
     padding: 0.5rem;
-    color: white;
+    color: rgba(255, 255, 255, 0.8);
     text-align: center;
     text-transform: capitalize;
     display: inline-block;
