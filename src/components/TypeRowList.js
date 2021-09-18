@@ -1,23 +1,21 @@
-import { memo } from 'react';
 import styled from 'styled-components';
 import TypeRow from './TypeRow';
+
 
 const StyledTypeRowList = styled.section`
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     padding: 0.5e;
-    margin-top: 0.5rem;
+    margin-top: .5rem;
 `;
 
-const TypeRowList = memo(({ moveTypes }) => {
+const TypeRowList = ({ moveTypes }) => {
+    console.log(moveTypes);
     const sortedMoveTypes = [...moveTypes].sort((a, b) => {
-        return (
-            b.firstTypeMultiplier * b.secondTypeMultiplier -
-            a.firstTypeMultiplier * a.secondTypeMultiplier
-        );
+        return (b.firstTypeMultiplier * b.secondTypeMultiplier) - (a.firstTypeMultiplier * a.secondTypeMultiplier);
     });
-
+    
     return (
         <StyledTypeRowList>
             {sortedMoveTypes.map((type) => (
@@ -25,13 +23,11 @@ const TypeRowList = memo(({ moveTypes }) => {
                     moveType={type.type}
                     colorCode={type.colorCode}
                     key={type.type}
-                    multiplier={
-                        type.firstTypeMultiplier * type.secondTypeMultiplier
-                    }
+                    multiplier={type.firstTypeMultiplier * type.secondTypeMultiplier}
                 />
             ))}
         </StyledTypeRowList>
     );
-});
+};
 
 export default TypeRowList;
